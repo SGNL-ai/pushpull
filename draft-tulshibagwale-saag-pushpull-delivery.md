@@ -9,7 +9,6 @@ submissiontype: IETF
 # date autofilled by xml2rfc
 area: sec
 wg: saag
-
 venue:
   github: "SGNL-ai/pushpull"
   latest: "https://sgnl-ai.github.io/pushpull/"
