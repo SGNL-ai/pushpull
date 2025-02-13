@@ -59,7 +59,7 @@ jobs:
         with:
           path: |
             index.html
-            draft-ietf-tulshibagwale-saag-pushpull-delivery.txt
+            draft-tulshibagwale-saag-pushpull-delivery.txt
 
   # Deployment job
   deploy:
