@@ -339,9 +339,9 @@ This section describes conformance criteria for entities conforming to this spec
 
 The "Multi-Push" conformance class enables a Transmitter to deliver multiple SETs to a Receiver. To conform to the "Multi-Push" class, a Transceiver acts as only one role: a Transmitter or Receiver.
 
-A Transmitter MUST support `sets` in the request Communication Object.
+- A Transmitter MUST support `sets` in the request Communication Object.
 
-A Receiver MUST support `acks` and `setErrs` in the response Communication Object.
+- A Receiver MUST support `acks` and `setErrs` in the response Communication Object.
 
 ## Push-Pull
 

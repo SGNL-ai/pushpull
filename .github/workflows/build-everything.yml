@@ -57,7 +57,10 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: |
+            index.html
+            draft-ietf-tulshibagwale-saag-pushpull-delivery.txt
+
   # Deployment job
   deploy:
     if: github.ref == 'refs/heads/main'
