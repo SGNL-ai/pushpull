@@ -57,10 +57,7 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            index.html
-            draft-ietf-tulshibagwale-saag-pushpull-delivery.txt
-
+          path: .
   # Deployment job
   deploy:
     environment:
