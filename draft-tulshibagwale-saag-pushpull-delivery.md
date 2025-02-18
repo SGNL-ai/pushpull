@@ -357,9 +357,6 @@ If a Transceiver previously attempted to deliver a SET in a response to a Peer's
 ## All SETs Accounted For {#all-sets-accounted-for}
 A Transceiver MUST ensure that it includes the `jti` value of each SET it receives, either in an `ack` or a `setErrs` value, to the Transceiver from which it received the SETs. A Transceiver SHOULD retry sending the same SET again if it was never responded to either in an `ack` value or in a `setErrs` value by a receiving Transceiver in a reasonable time period. A Transceiver MAY limit the number of times it retries sending a SET. A Transceiver MAY publish the retry time period and maximum number of retries to its peers, but such publication is outside the scope of this specification.
 
-# Uniqueness of SETs
-A Transceiver MUST NOT send two SETs with the same `jti` value if the SET has been either acknowledged through `ack` value or produced an error indicated by a `setErrs` value. If a Transceiver wishes to re-send an event after it has received a error response through a `setErrs` value, then it MUST generate a new SET that has a new (and unique) `jti` value.
-
 # Conformance
 
 This section describes conformance criteria for entities conforming to this specification.
