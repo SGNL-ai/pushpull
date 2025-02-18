@@ -74,9 +74,14 @@ normative:
 
 
 --- abstract
-In situations where a transmitter of Security Event Tokens (SETs) to a network peer is also a receiver of SETs from the same peer, it is helpful to have an efficient way of sending and receiving SETs in one HTTP transaction. In many cases, such as when using the OpenID Shared Signals Framework (SSF), the situation where each entity is both a transmitter and receiver is getting increasingly common.
+This specification defines how multiple Security Event Tokens (SETs) can be delivered and received to and by an intended recipeint using HTTP POST over TLS or WebSocket binding.
 
-Using current mechanisms such as "Push-Based Delivery of Security Event Tokens (SETs) Using HTTP" or "Poll-Based Delivery of Security Event Tokens (SETs) Using HTTP" both require two or more HTTP connections to exchange SETs between peers. This is inefficient due to the latency of setting up each communication. This specification enables bi-directional transmission and reception of multiple SETs in one HTTP connection, and enables them to do so over a single HTTP or WebSocket connection. 
+This specification enabled following two use cases -
+
+* In situations where a transmitter of Security Event Tokens (SETs) to a network peer is also a receiver of SETs from the same peer, it is helpful to have an efficient way of sending and receiving SETs in one HTTP transaction. In many cases, such as when using the OpenID Shared Signals Framework (SSF), the situation where each entity is both a transmitter and receiver is getting increasingly common.
+* In situations where a transmitter of Security Event Tokens (SETs) wants to transmit multiple SETs to the reciever in a single HTTP call.
+
+Using current mechanisms such as "Push-Based Delivery of Security Event Tokens (SETs) Using HTTP" or "Poll-Based Delivery of Security Event Tokens (SETs) Using HTTP" both require two or more HTTP connections to exchange SETs between peers. This is inefficient due to the latency of setting up each communication. This specification enables mutiple events to be transmitted in bi-directional transmission and reception of multiple SETs in one HTTP connection, and enables them to do so over a single HTTP or WebSocket binding.
 --- middle
 
 # Introduction
@@ -87,6 +92,24 @@ Entities that exchange SETs {{RFC8417}} with each other ("Transceivers") can do 
 * The Peer responding to the communication can send multiple SETs in its response to a connection from the Transceiver
 * The Peer responding to the communication can acknowledge previously received SETs in its response to the Transceiver
 
+This specification also defines a mechanism by which a transmitter of a
+   Security Event Token (SET) [RFC8417] can deliver multiple SETs to an
+   intended SET Recipient via HTTP POST [RFC7231] over TLS in a single
+   POST call.  [RFC8935] focuses on the delivery of the single SET to
+   the receiver.  This specification builds onto [RFC8935] to transmit
+   multiple SETs to the receiver in a single POST call.
+
+   Multi-push SET delivery is intended to help in following scenarios:
+
+   *  The transmitter of the SET has multiple outstanding SETs to be
+      communicated to the receiver
+
+   *  The transmitter wants to reduce the number of outbound calls to
+      the same receiver to optimize performance, avoid being ratelimited
+      when number of SETs to be communicated is high
+
+   *  The receiver wants to optimize processing multiple SETs
+
 # Notational Conventions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
@@ -96,6 +119,12 @@ described in BCP 14 {{RFC2119}} {{RFC8174}} when, and only when,
 they appear in all capitals, as shown here.
 
 # Terminology
+
+Transmitter
+: A networked entity that can act as a transmitter of SETs. It communicates with other trusted Receivers to transmit using the protocol defined herein.
+
+Receiver
+: A networked entity that can act as a receiver of SETs. It communicates with other trusted Transmitter to receive SETs using the protocol defined herein.
 
 Transceiver
 : A networked entity that can act both as a transmitter of SETs and a receiver of SETs. It communicates with other trusted Transceivers to transmit and receive SETs using the protocol defined herein.
