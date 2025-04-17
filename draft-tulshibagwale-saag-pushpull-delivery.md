@@ -29,12 +29,6 @@ author:
   name: Atul Tulshibagwale
   org: SGNL
   email: atul@sgnl.ai
-
-contributor:
-- ins: E. Gustavson
-  name: Erik Gustavson
-  org: SGNL
-  email: erik@sgnl.ai
 - ins: A. Deshpande
   name: Apoorva Deshpande
   org: Okta
@@ -43,6 +37,12 @@ contributor:
   name: Aaron Parecki
   org: Okta
   email: aaron@parecki.com
+
+contributor:
+- ins: E. Gustavson
+  name: Erik Gustavson
+  org: SGNL
+  email: erik@sgnl.ai
 
 normative:
   RFC2119: # Keywords
